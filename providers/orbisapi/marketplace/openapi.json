@@ -1,0 +1,48 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Orbis API Marketplace",
+    "version": "1.0.0",
+    "description": "8,000+ APIs via x402 USDC micropayments on Base and Solana"
+  },
+  "servers": [
+    {
+      "url": "https://orbisapi.com"
+    }
+  ],
+  "paths": {
+    "/proxy/{slug}/": {
+      "get": {
+        "summary": "Call any Orbis marketplace API",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "API response after x402 payment"
+          },
+          "402": {
+            "description": "Payment required \u2014 includes Base and Solana USDC payment options"
+          }
+        }
+      }
+    },
+    "/api/bazaar/discover": {
+      "get": {
+        "summary": "Browse and search the API catalog",
+        "responses": {
+          "200": {
+            "description": "List of available APIs with pricing"
+          }
+        }
+      }
+    }
+  }
+}
